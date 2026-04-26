@@ -97,15 +97,6 @@
     }
     .section-header p { font-size: 0.85rem; color: var(--text-secondary); }
 
-    .file-output {
-      display: inline-flex; align-items: center; gap: 5px; margin-top: 10px;
-      padding: 4px 10px; background: var(--surface-raised);
-      border: 1px solid var(--border); border-radius: 6px;
-      font-size: 0.7rem; font-weight: 500; color: var(--text-muted);
-      font-family: 'SF Mono', 'Fira Code', monospace;
-    }
-    .file-output span { color: var(--text-secondary); }
-
     /* Fields */
     .field-group { margin-bottom: 24px; }
     .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -297,7 +288,7 @@
 <div class="hero" id="heroSection">
   <div class="hero-badge">OpenClaw Build Intake</div>
   <h1>Agent Build Intake</h1>
-  <p>Every answer maps directly to a file in the agent's workspace. Fill out what you know — the build bot handles the rest.</p>
+  <p>Fill out what you know. Your build engineer handles the rest.</p>
 </div>
 
 <form class="form-container" id="intakeForm" novalidate>
@@ -307,12 +298,7 @@
     <div class="section-header">
       <div class="section-tag">Section 01 — The Operator</div>
       <h2>Who is running this agent?</h2>
-      <p>This becomes <strong>USER.md</strong> — how the agent understands the person it's working for.</p>
-      <div class="file-output">&#128196; <span>USER.md</span></div>
-    </div>
-
-    <div class="info-box">
-      The agent reads USER.md every session before doing anything. The more specific this is, the better it understands who it's serving and how to communicate.
+      <p>Basic info about the person the agent is working for — how to reach them and how they like to communicate.</p>
     </div>
 
     <div class="field-row">
@@ -387,8 +373,7 @@
     <div class="section-header">
       <div class="section-tag">Section 02 — Business Context</div>
       <h2>What is this business?</h2>
-      <p>This feeds the agent's core knowledge base — what it knows about the operation from day one.</p>
-      <div class="file-output">&#128196; <span>memory/context.md</span></div>
+      <p>Help the agent understand the operation — what it does, who it serves, and where the biggest gaps are.</p>
     </div>
 
     <div class="field-row">
@@ -433,8 +418,7 @@
     <div class="section-header">
       <div class="section-tag">Section 03 — Main Agent</div>
       <h2>Define the lead agent</h2>
-      <p>The primary orchestrator — its identity and soul are built from this section.</p>
-      <div class="file-output">&#128196; <span>IDENTITY.md &nbsp;/&nbsp; SOUL.md</span></div>
+      <p>Name it, give it a personality, and define what it does day-to-day.</p>
     </div>
 
     <div class="field-row">
@@ -498,8 +482,7 @@
     <div class="section-header">
       <div class="section-tag">Section 04 — Subagents</div>
       <h2>Does this build need specialist agents?</h2>
-      <p>Each subagent gets its own IDENTITY.md and SOUL.md. Define the team here.</p>
-      <div class="file-output">&#128196; <span>subagents/[name]/IDENTITY.md &nbsp;/&nbsp; SOUL.md</span></div>
+      <p>Some builds run a full team — sales, onboarding, ops, content. Define who's on the team and what each one owns.</p>
     </div>
 
     <div class="field-group">
@@ -546,8 +529,7 @@
     <div class="section-header">
       <div class="section-tag">Section 05 — Channels &amp; Tools</div>
       <h2>What does the agent connect to?</h2>
-      <p>Everything the agent needs access to — messaging, platforms, data, and APIs.</p>
-      <div class="file-output">&#128196; <span>TOOLS.md</span></div>
+      <p>Every channel it communicates through and every platform it needs access to.</p>
     </div>
 
     <div class="field-group">
@@ -599,8 +581,7 @@
     <div class="section-header">
       <div class="section-tag">Section 06 — Workflows &amp; Handoffs</div>
       <h2>How does work flow through the system?</h2>
-      <p>These become the cross-agent handoff rules inside SOUL.md — what triggers what, and who owns each step.</p>
-      <div class="file-output">&#128196; <span>SOUL.md — cross-agent handoffs</span></div>
+      <p>What triggers what, who owns each step, and what always requires a human in the loop.</p>
     </div>
 
     <div class="field-group">
@@ -652,8 +633,7 @@
     <div class="section-header">
       <div class="section-tag">Section 07 — Knowledge Base</div>
       <h2>What does the agent need to know?</h2>
-      <p>This content becomes the agent's memory files — the domain knowledge it has loaded from day one.</p>
-      <div class="file-output">&#128196; <span>memory/knowledge.md &nbsp;/&nbsp; memory/protocols.md</span></div>
+      <p>Products, rules, FAQs, terminology — everything it needs to operate accurately from day one.</p>
     </div>
 
     <div class="field-group">
