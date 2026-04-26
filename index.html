@@ -11,18 +11,18 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #0a0a0f;
-      --surface: #12121a;
-      --surface-raised: #1a1a26;
-      --border: #2a2a3a;
-      --border-focus: #4f6ef7;
-      --text: #e8e8ed;
-      --text-secondary: #8888a0;
-      --text-muted: #55556a;
-      --accent: #4f6ef7;
-      --accent-soft: rgba(79, 110, 247, 0.12);
-      --accent-glow: rgba(79, 110, 247, 0.25);
-      --success: #34d399;
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface-raised: #1a1a1a;
+      --border: #2a2a2a;
+      --border-focus: #f57c00;
+      --text: #e8e8e8;
+      --text-secondary: #999999;
+      --text-muted: #5a5a5a;
+      --accent: #f57c00;
+      --accent-soft: rgba(245, 124, 0, 0.10);
+      --accent-glow: rgba(245, 124, 0, 0.25);
+      --success: #f57c00;
       --error: #f87171;
       --radius: 10px;
       --radius-lg: 16px;
@@ -50,7 +50,7 @@
       display: inline-block;
       padding: 6px 16px;
       background: var(--accent-soft);
-      border: 1px solid rgba(79, 110, 247, 0.2);
+      border: 1px solid rgba(245, 124, 0, 0.2);
       border-radius: 100px;
       font-size: 0.8rem;
       font-weight: 500;
@@ -383,7 +383,7 @@
     }
     .btn-submit:hover {
       filter: brightness(1.1);
-      box-shadow: 0 4px 20px rgba(52, 211, 153, 0.25);
+      box-shadow: 0 4px 20px rgba(245, 124, 0, 0.25);
     }
 
     /* ── Thank You ── */
@@ -399,8 +399,8 @@
       width: 72px;
       height: 72px;
       border-radius: 50%;
-      background: rgba(52, 211, 153, 0.12);
-      border: 2px solid var(--success);
+      background: rgba(245, 124, 0, 0.12);
+      border: 2px solid var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -891,9 +891,9 @@
       container.innerHTML = '';
       sectionNames.forEach((name, i) => {
         const step = document.createElement('div');
-        step.className = 'progress-step' + (i + 1 === currentSection ? ' active' : '') + (i + 1 < currentSection ? ' completed' : '');
+        step.className = 'progress-step' + (i + 1 === currentSection ? ' active' : '');
         step.textContent = name;
-        step.onclick = () => { if (i + 1 <= currentSection) goToSection(i + 1); };
+        step.onclick = () => { goToSection(i + 1); };
         container.appendChild(step);
       });
     }
@@ -946,7 +946,6 @@
     }
 
     function nextSection() {
-      if (!validateSection(currentSection)) return;
       if (currentSection < totalSections) goToSection(currentSection + 1);
     }
 
@@ -971,7 +970,12 @@
     });
 
     function submitForm() {
-      if (!validateSection(currentSection)) return;
+      // Validate all sections before submitting
+      let allValid = true;
+      for (let i = 1; i <= totalSections; i++) {
+        if (!validateSection(i)) { allValid = false; goToSection(i); break; }
+      }
+      if (!allValid) return;
 
       const form = document.getElementById('intakeForm');
       const formData = new FormData(form);
